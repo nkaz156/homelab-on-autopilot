@@ -1,0 +1,2 @@
+endpoint: https://192.168.100.1:6443
+gatewayIP: 192.168.1.1
