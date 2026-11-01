@@ -1,0 +1,15 @@
+clusterName: Plunger
+clusterEndpoint: ref+file://ips/cluster.ip.yaml#/endpoint
+kubernetesVerson: 1.37.1
+talosVersion: 1.14.5
+patchesDir: ../common
+data:
+  gatewayIP: ref+file://ips/cluster.ip.yaml#/gatewayIP
+
+nodes:
+  - host: plunger-c-01.ref+file://ips/cluster.ip.yaml#/int_domain
+    ip: ref+file://ips/cluster.ip.yaml#/pilotIP
+    role: control-plane
+    data:
+      staticIP: ref+file://ips/cluster.ip.yaml#/pilotIP+ref+file://ips/cluster.ip.yaml#/cidr
+      interface: net0

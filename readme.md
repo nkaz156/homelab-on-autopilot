@@ -1,4 +1,6 @@
 # Introduction:
+
+
 This repo provides declarative configuration management for my kubernetes cluster, which is still in its infancy, but some day will have a lot of cool services. Currently, I have my GitOps repos separated into this one, a private repo to hold sops-encrypted secrets, and a private repo which holds my talhelper configuration. 
 
 I currently use Cilium as a CNI and kube-proxy replacement, and Flux to manage deployment of software. I also uses Cilium as a GatewayAPI provider and as a load balancer via L2 announcements (I'll get around to BGP sometime when I get a better router).
@@ -16,6 +18,11 @@ I am not a software professional or DevOps engineer, so while I try to keep ever
  - `system-infrastructure` holds the base-level deployments which run the cluster. Any configuration is declarative through this repo, so these should ideally only be interacted with through the monitoring stack. `system-infrastructure` is split between `configs` and `controllers`. Controllers houses the source helm release/deployment, configs houses the objects managed by the controllers (cilium LB IP pools, Cert manager issuers, etc.)
  - `user-infrastructure` houses software like sso providers, metrics dashboards, pgadmin, or other things an administrator may administrate. 
  - `apps` holds any other deployments which end users will use. Right now it's just a demo instance of nginx I set up to learn about deployments without helm.
+
+## plans
+consider an ArtifactGenerator based approach to manage configs for shared services. This is on hold though:
+[ArtifactGenerator reference](https://fluxcd.io/flux/components/source/artifactgenerators/
+)
 
 ## Inspirations:
  - anokfireball's [homelab-as-code](https://github.com/anokfireball/homelab-as-code) was a major help in structuring this repository along flux best practices, and in finding core services to use.
