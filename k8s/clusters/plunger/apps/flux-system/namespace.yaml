@@ -2,6 +2,9 @@
 # yaml-language-server: $schema=https://k8s-schemas.home-operations.com/core/namespace_v1.json
 apiVersion: v1
 kind: Namespace
+
+namespace: flux-system
+
 metadata:
   name: _
   annotations:

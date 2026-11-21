@@ -5,6 +5,7 @@ talosVersion: 1.14.5
 patchesDir: ../common
 data:
   gatewayIP: ref+file://ips/cluster.ip.yaml#/gatewayIP
+  internalDomain: ref+file://ips/cluster.ip.yaml#/int_domain
 
 nodes:
   - host: plunger-c-01.ref+file://ips/cluster.ip.yaml#/int_domain

@@ -1,0 +1,86 @@
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cilium
+
+spec:
+  interval: 10m
+  chartRef:
+    kind: OCIRepository
+    name: cilium
+
+  values:
+    cluster:
+      id: 0
+      name: plunger
+
+    kubeProxyReplacement: true
+    k8sServiceHost: 127.0.0.1
+    k8sServicePort: 7445
+
+    enableLBIPAM: true
+    ipam:
+      mode: kubernetes
+
+    l2announcements:
+      enabled: true
+      leaseDuration: 15s
+      leaseRenewDeadline: 5s
+      leaseRetryPeriod: 2s
+
+    k8sClientRateLimit:
+      qps: 20
+      burst: 30
+
+    gatewayAPI:
+      enabled: true
+
+    securityContext:
+      capabilities:
+        ciliumAgent:
+          - CHOWN
+          - KILL
+          - NET_ADMIN
+          - NET_RAW
+          - IPC_LOCK
+          - SYS_ADMIN
+          - SYS_RESOURCE
+          - DAC_OVERRIDE
+          - FOWNER
+          - SETGID
+          - SETUID
+        cleanCiliumState:
+          - NET_ADMIN
+          - SYS_ADMIN
+          - SYS_RESOURCE
+
+    hubble:
+      enabled: true
+      relay:
+        enabled: true
+        rollOutPods: true
+        resources:
+          requests:
+            cpu: 10m
+            memory: 64mi
+          limits:
+            memory: 128Mi
+
+      ui:
+        enabled: true
+        rollOutPods: true
+        resources:
+          requests:
+            cpu: 10m
+            memory: 64mi
+          limits:
+            memory: 128Mi
+        backend:
+          resources:
+            requests:
+              cpu: 10m
+              memory: 64mi
+            limits:
+              memory: 128Mi
