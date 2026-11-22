@@ -8,7 +8,7 @@ spec:
   interval: 15m
   url: oci://ghcr.io/openbao/charts/openbao
   ref:
-    tag: openbao-0.30.8
+    digest: sha256:394ccf3a49362c8565ead095d132a398d8fc183c
 
   layerSelector:
     mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
