@@ -1,5 +1,6 @@
 [tools]
+"github:postfinance/topf" = "0.6.2"
 helm = "latest"
-helm-diff = "3.15.15"
 helmfile = { version = "1.8.4", workflow = "releaser.yaml" }
+kubectl = "1.37.2"
 talosctl = "1.14.5"

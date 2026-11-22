@@ -1,3 +1,5 @@
 *.ip.*
 !*.example
 secrets.yaml
+
+kubeconfig/

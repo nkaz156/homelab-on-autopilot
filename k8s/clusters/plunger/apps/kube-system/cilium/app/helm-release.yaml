@@ -12,6 +12,9 @@ spec:
     name: cilium
 
   values:
+    operator:
+      replicas: 1
+
     cluster:
       id: 0
       name: plunger
@@ -64,7 +67,7 @@ spec:
         resources:
           requests:
             cpu: 10m
-            memory: 64mi
+            memory: 64Mi
           limits:
             memory: 128Mi
 
@@ -74,13 +77,13 @@ spec:
         resources:
           requests:
             cpu: 10m
-            memory: 64mi
+            memory: 64Mi
           limits:
             memory: 128Mi
         backend:
           resources:
             requests:
               cpu: 10m
-              memory: 64mi
+              memory: 64Mi
             limits:
               memory: 128Mi
