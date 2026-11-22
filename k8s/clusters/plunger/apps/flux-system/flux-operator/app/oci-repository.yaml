@@ -10,6 +10,6 @@ spec:
   ref:
     tag: 0.62.1
 
-layerSelector:
-  mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
-  operation: copy
+  layerSelector:
+    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+    operation: copy
