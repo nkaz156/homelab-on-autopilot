@@ -8,11 +8,18 @@ IPs are in gitignored text files under `ips/`.
 
 ## Generate short-term kubeconfig
 This takes advantage of `topf`'s short kubectl durations and makes it easy to get `kubectl` access to a cluster. Just run it in that cluster's `topf.yaml` directory
-```
+```bash
 GIT_ROOT_DIR=$(git rev-parse --show-toplevel)
 KUBECONFIG_DIR=$GIT_ROOT_DIR/kubeconfig
 if [ ! -d $KUBECONFIG_DIR ]; then mkdir $KUBECONFIG_DIR; fi
-topf kubeconfig > $KUBECONFIG_DIR/kubeconfig
+topf kubeconfig --topfconfig $GIT_ROOT_DIR/topf/plunger/topf.yaml > $KUBECONFIG_DIR/kubeconfig
+export KUBECONFIG=$KUBECONFIG_DIR/kubeconfig
+```
+
+### Using existing kubeconfig:
+```bash
+GIT_ROOT_DIR=$(git rev-parse --show-toplevel)
+KUBECONFIG_DIR=$GIT_ROOT_DIR/kubeconfig
 export KUBECONFIG=$KUBECONFIG_DIR/kubeconfig
 ```
 
