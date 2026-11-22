@@ -19,8 +19,7 @@ spec:
   postBuild:
     substitute: {}
 
-  dependsOn:
-    - name: flux-operator
+  dependsOn: []
 
   commonMetadata:
     labels:
